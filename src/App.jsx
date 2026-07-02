@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import Login from './pages/Login.jsx';
 import FindMyPhone from './pages/FindMyPhone.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
@@ -98,6 +99,7 @@ function App() {
           <AuthenticatedApp />
         </Router>
         <Toaster />
+        <PWAInstallPrompt />
       </QueryClientProvider>
     </AuthProvider>
   );
