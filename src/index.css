@@ -21,26 +21,26 @@
     --sos-green-light: #E6F7EE;
     --sos-blue:        #4A90D9;
 
-    /* shadcn tokens */
-    --background: 220 14% 97%;
-    --foreground: 224 47% 9%;
+    /* shadcn tokens — light theme, no dark overrides */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 224 47% 9%;
+    --card-foreground: 222 47% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 47% 9%;
-    --primary: 0 82% 69%;
+    --popover-foreground: 222 47% 9%;
+    --primary: 0 82% 44%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 95%;
-    --secondary-foreground: 224 47% 9%;
+    --secondary-foreground: 222 47% 9%;
     --muted: 220 14% 95%;
-    --muted-foreground: 220 9% 55%;
+    --muted-foreground: 220 9% 45%;
     --accent: 220 14% 95%;
-    --accent-foreground: 224 47% 9%;
-    --destructive: 0 84% 60%;
+    --accent-foreground: 222 47% 9%;
+    --destructive: 0 84% 44%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
-    --ring: 0 82% 69%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 0 82% 44%;
     --radius: 1rem;
   }
 }
@@ -60,9 +60,20 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    background: var(--sos-bg) !important;
+    @apply text-foreground;
+    /* No forced background — each page sets its own */
+    background: var(--sos-bg);
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', sans-serif;
+    color: var(--sos-text);
+  }
+
+  /* Explicit input/text color reset so dark mode tokens don't bleed */
+  input, textarea, select {
+    color: #111827;
+    background: #ffffff;
+  }
+  input::placeholder, textarea::placeholder {
+    color: #9CA3AF;
   }
 
   /* Scrollbar */
@@ -199,8 +210,8 @@
 
 /* Keep old NT classes as aliases so nothing breaks */
 .nt-blob-blue, .nt-blob-cyan { display: none; }
-.nt-card { @apply sos-card; }
-.nt-btn-primary { @apply sos-btn; }
+.nt-card { background: var(--sos-surface); border: 1px solid var(--sos-border); border-radius: 1.25rem; }
+.nt-btn-primary { background: var(--sos-coral); color: #fff; border-radius: 999px; font-weight: 700; }
 .nt-dot-active {
   width: 8px; height: 8px;
   background: var(--sos-green);
@@ -214,4 +225,10 @@
   border-radius: 50%;
   box-shadow: 0 0 6px rgba(240,113,112,0.6);
   display: inline-block;
+}
+/* Remove any leftover dark NT CSS variables */
+:root {
+  --nt-bg: #F8F9FB;
+  --nt-surface: #FFFFFF;
+  --nt-text: #111827;
 }
