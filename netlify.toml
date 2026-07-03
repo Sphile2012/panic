@@ -6,7 +6,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Redirect all routes to index.html for React Router (SPA)
+# Proxy API requests to Netlify function (which wraps the Express backend)
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
+  status = 200
+  force  = true
+
+# Redirect all other routes to index.html for React Router (SPA)
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
