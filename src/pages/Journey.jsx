@@ -5,14 +5,15 @@ import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { entities } from "@/api/client";
 import { useAuth } from "@/lib/AuthContext";
-import { MapPin, Users, Play, Square, CheckCircle } from "lucide-react";
-import PageHeader from "@/components/ui/PageHeader";
+import { MapPin, Users, Play, Square, CheckCircle, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_BASE = import.meta["env"]?.VITE_API_URL || "http://localhost:3001";
 
 export default function Journey() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [destination, setDestination] = useState("");
   const [duration, setDuration] = useState(30);
   const [selectedContacts, setSelectedContacts] = useState([]);
@@ -179,10 +180,16 @@ export default function Journey() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-white">
       <div className="max-w-md mx-auto px-4 pt-6 pb-24">
-        <PageHeader
-          title="Journey Planner"
-          subtitle="Share your route with trusted contacts"
-        />
+        <div className="flex items-center gap-3 mb-6">
+          <button onClick={() => navigate(-1)}
+            className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+            <ArrowLeft size={18} />
+          </button>
+          <div>
+            <h1 className="text-xl font-bold text-white">Journey Planner</h1>
+            <p className="text-[#666] text-xs">Share your route with trusted contacts</p>
+          </div>
+        </div>
 
         <AnimatePresence mode="wait">
           {completed ? (

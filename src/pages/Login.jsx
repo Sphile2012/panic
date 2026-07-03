@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 /* ── Help modal ────────────────────────────────────────────────── */
 function HelpModal({ onClose }) {
   const steps = [
-    { title: "Create an Account", desc: "Tap "Create Account", enter your full name, email and a password (min 6 characters), then tap the button to register." },
-    { title: "Sign In", desc: "Already have an account? Tap "Sign In", enter your email and password, then tap Sign In." },
-    { title: "Forgot Password?", desc: "Contact support via WhatsApp or email below and we'll reset it for you." },
-    { title: "Email not working?", desc: "Check for typos. Use the email you registered with. Passwords are case-sensitive." },
+    { title: "Create an Account", desc: `Tap "Create Account", enter your full name, email and a password (min 6 characters), then tap the button to register.` },
+    { title: "Sign In", desc: `Already have an account? Tap "Sign In", enter your email and password, then tap Sign In.` },
+    { title: "Forgot Password?", desc: `Contact support via WhatsApp or email below and we'll reset it for you.` },
+    { title: "Email not working?", desc: `Check for typos. Use the email you registered with. Passwords are case-sensitive.` },
   ];
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
