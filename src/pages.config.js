@@ -55,6 +55,7 @@ import Map from './pages/Map';
 import Settings from './pages/Settings';
 import FakeCall from './pages/FakeCall';
 import Guide from './pages/Guide';
+import Journey from './pages/Journey';
 import __Layout from './Layout.jsx';
 
 
@@ -67,6 +68,7 @@ export const PAGES = {
     "Settings": Settings,
     "FakeCall": FakeCall,
     "Guide": Guide,
+    "Journey": Journey,
 }
 
 export const pagesConfig = {
